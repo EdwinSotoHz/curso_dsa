@@ -3,17 +3,11 @@
 from Node_sandbox import Node 
 
 class DoublyLinkedLis_Modified():
-    ################## Constructor modificado ########################
-    def __init__(self, initial_value=None):
-        if initial_value is not None:
-            initial_node = Node(initial_value)
-            self.head_node = initial_node
-            self.tail_node = initial_node
-        else:
-            self.head_node = None
-            self.tail_node = None
-
     ################## Clase DLL normal ########################
+    def __init__(self, head_node = None, tail_node = None):
+        self.head_node = head_node
+        self.tail_node = tail_node
+
     def add_to_head(self, new_value):
         new_head = Node(new_value)
         current_head = self.head_node
@@ -117,7 +111,7 @@ class DoublyLinkedLis_Modified():
         return current_node
 
     # Cifrar
-    def caesar_cipher_linked_list(strMessage, n):
+    def caesar_cipher(self, strMessage, n):
         alph = [
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
             'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' '
@@ -133,3 +127,13 @@ class DoublyLinkedLis_Modified():
             new_node = alphabet_list.move_node(node_i, n)
             ciphered_message += new_node.value
         return ciphered_message
+
+    # ataque de fuerza bruta
+    def brute_force_attack(self, message, cardinality):
+        alph = [
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+            'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' '
+        ]
+        for i in range(cardinality):
+            desC_message = self.caesar_cipher(message, i)
+            print(desC_message)
