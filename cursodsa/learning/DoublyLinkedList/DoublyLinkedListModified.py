@@ -2,11 +2,18 @@
 # Recuerda importar la clase Node en este script
 from Node_sandbox import Node 
 
-class Caesar_Cipher():
-    def __init__(self, head_node = None, tail_node = None):
-        self.head_node = head_node
-        self.tail_node = tail_node
+class DoublyLinkedLis_Modified():
+    ################## Constructor modificado ########################
+    def __init__(self, initial_value=None):
+        if initial_value is not None:
+            initial_node = Node(initial_value)
+            self.head_node = initial_node
+            self.tail_node = initial_node
+        else:
+            self.head_node = None
+            self.tail_node = None
 
+    ################## Clase DLL normal ########################
     def add_to_head(self, new_value):
         new_head = Node(new_value)
         current_head = self.head_node
@@ -108,3 +115,21 @@ class Caesar_Cipher():
                 else:
                     current_node = self.tail_node
         return current_node
+
+    # Cifrar
+    def caesar_cipher_linked_list(strMessage, n):
+        alph = [
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+            'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' '
+        ]
+        alphabet_list = DoublyLinkedLis_Modified()
+        for letter in alph:
+            alphabet_list.add_to_tail(letter)
+    
+        ciphered_message = ""
+    
+        for c in strMessage:
+            node_i = alphabet_list.find_node(c)
+            new_node = alphabet_list.move_node(node_i, n)
+            ciphered_message += new_node.value
+        return ciphered_message
