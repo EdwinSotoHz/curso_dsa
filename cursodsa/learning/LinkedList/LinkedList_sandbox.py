@@ -18,11 +18,11 @@ class LinkedList():
         self.head_node = new_node
 
     def stringify_list(self):
-        string_list = ""
-        current_node = self.get_head_node()
+        string_list = str(self.get_head_node())
+        current_node = self.get_head_node().get_next_node()
         while current_node is not None:
             if current_node.get_value() is not None:
-                string_list += str(current_node.get_value()) + "\n"
+                string_list += "->" + str(current_node.get_value())
             current_node = current_node.get_next_node()
         return string_list
 
